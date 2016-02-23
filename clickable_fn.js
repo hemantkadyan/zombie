@@ -1,4 +1,4 @@
-
+$(document).ready(function(){
 clickable = function(a){
       var clickables = [];
       if (a==11) {
@@ -37,3 +37,12 @@ clickable = function(a){
        return clickables =[66,67,76];
       }
     }
+    $(".box").click(function(){
+          var content = 'Player <br/>1<br/><span class="glyphicon glyphicon-bishop" aria-hidden="true"></span>';
+          var s=$('.box:contains("Player 1")').attr('id');
+          var s1 = parseInt(s);
+
+          p = clickable(s1);
+          alert(p);
+        });
+    });
