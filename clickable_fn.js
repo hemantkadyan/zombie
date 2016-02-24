@@ -45,14 +45,15 @@ $(".box").click(function(){
     a= parseInt($(this).attr("id"));
     var b = $(this).attr("id");
     var s=$('.box:contains("Player 1")').attr('id');
-    alert(a);
+ //   alert(a);
     var id = parseInt(s);
     var q =clickable(id);
+//
     alert(q);
     var content,new_box;
     if (q.indexOf(a) != -1) {
     content = $('.box:contains("Player 1")').html();
-    alert(content)
+  //  alert(content)
     $('#' + s).html(' ');
     $('#' + s).removeClass("btn-defualt");
     $('#' + s).addClass("btn-primary");
