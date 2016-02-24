@@ -49,7 +49,7 @@ $(".box").click(function(){
     var id = parseInt(s);
     var q =clickable(id);
 //
-    alert(q);
+  //  alert(q);
     var content,new_box;
     if (q.indexOf(a) != -1) {
     content = $('.box:contains("Player 1")').html();
