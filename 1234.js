@@ -4,59 +4,45 @@ $(document).ready(function(){
 clickable = function(a){
       var clickables = [];
       if (a==11) {
-        clickables = [12,21,22];
+         return clickables = [12,21,22];
       }
 
       else if(a>11 && a<17){
-        clickables = [a-1,a+1,a+9,a+10,a+11];
+       return clickables = [a-1,a+1,a+9,a+10,a+11];
       }
 
       else if (a==17) {
-        clickables = [16,26,27];
+       return clickables = [16,26,27];
       }
 
       else if (a == 21 ||a == 31 ||a == 41 ||a == 51 ||a == 61 ) {
-        clickables = [a-10,a-9,a+1,a+10,a+11];
+       return clickables = [a-10,a-9,a+1,a+10,a+11];
       }
 
       else if (a == 27 ||a == 37 ||a == 47||a == 57 ||a == 67 ) {
-        clickables = [a-11,a-10,a-1,a+9,a+10];
+       return clickables = [a-11,a-10,a-1,a+9,a+10];
       }
 
       else if (a>21 && a<67){
-        clickables = [a-11,a-10,a-9,a-1,a+1,a+9,a+10,a+11];
+       return clickables = [a-11,a-10,a-9,a-1,a+1,a+9,a+10,a+11];
       }
 
       else if (a>71 && a<77) {
-        clickables = [a-11,a-10,a-9,a-1,a+1];
+       return clickables = [a-11,a-10,a-9,a-1,a+1];
       }
 
       else if (a == 71){
-        clickables = [61,62,72];
+       return clickables = [61,62,72];
       }
 
       else if (a== 77) {
-        clickables =[66,67,76];
+       return clickables =[66,67,76];
       }
-      var idd1 = parseInt($('.box:contains("Player 1")').attr("id"));
-      var idd2 = parseInt($('.box:contains("Player 2")').attr("id"));
-      n = clickables.length;
-      var j;
-      var a1 = clickables.slice(0,n);
-      for (var i = 0; i<n; i++) {
-        if ($('#' + a1[i]).hasClass('dead') || a1[i] == idd2 || a1[i] == idd1) {
-          j = clickables.indexOf(a1[i]);
-          clickables.splice(j,1);
-
-        }
-      }
-      return clickables;
-
     }
 
 
 function eatSpace(a){
-  $("#" +  a).addClass('dead');
+  $("#" +  a).css('background-color','red');
 }
 
 
@@ -71,9 +57,10 @@ $(".box").click(function(){
       if (confirm("Player 2 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
         play = 1;
-      //  alert("Now, it's Player1's turn to move.")
+        alert("Now, it's Player1's turn to move.")
       }
     }
+
   }
 
 
@@ -85,9 +72,7 @@ $(".box").click(function(){
     var id = parseInt(s);
     var q =clickable(id);
     var content,new_box;
-    if (q.length == 0) {
-      alert("Player2 Lost.")
-    }
+
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
@@ -102,7 +87,7 @@ $(".box").click(function(){
 
 
     play = 4;
-   // alert("Now it's player 2's time to eat up some space.");
+    alert("Now it's player 2's time to eat up some space.");
     }
   }
   }
@@ -120,7 +105,7 @@ $(".box").click(function(){
       if (confirm("Player 1 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
         play = 3;
-      //  alert("Now, it's Player2's turn to move.")
+        alert("Now, it's Player2's turn to move.")
       }
     }
   }
@@ -132,11 +117,10 @@ $(".box").click(function(){
     var b = $(this).attr("id");
     var s=$('.box1:contains("Player 1")').attr('id');
     var id = parseInt(s);
+    var id1 = 'q' + s;
+    var id2 = 'q' + b;
     var q =clickable(id);
     var content,new_box;
-    if (q.length===0) {
-      alert("Player1 Lost.")
-    }
 
 
     if (q.indexOf(a) != -1) {
@@ -151,8 +135,15 @@ $(".box").click(function(){
     $('#' + b).removeClass("btn-primary");
     $('#' + b).addClass("btn-defualt");
 
+
+    $('#' + id1).html(' ');
+    $('#' + id1).removeClass("btn-defualt");
+    $('#' + id1).addClass("btn-primary");
+    $('#' + id2).html(content);
+    $('#' + id2).removeClass("btn-primary");
+    $('#' + id2).addClass("btn-defualt");
     play = 2;
-   // alert("Now it's player 1's time to eat up some space.");
+    alert("Now it's player 1's time to eat up some space.");
     }
   }
   }
