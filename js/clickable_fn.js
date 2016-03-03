@@ -57,6 +57,7 @@ clickable = function(a){
 
 function eatSpace(a){
   $("#" +  a).addClass('dead');
+
 }
 
 
@@ -72,6 +73,7 @@ $(".box").click(function(){
         eatSpace(id1);
         play = 1;
       //  alert("Now, it's Player1's turn to move.")
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
       }
     }
   }
@@ -86,7 +88,8 @@ $(".box").click(function(){
     var q =clickable(id);
     var content,new_box;
     if (q.length == 0) {
-      alert("Player2 Lost.")
+      //alert("Player2 Lost.");
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
     }
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
@@ -103,6 +106,7 @@ $(".box").click(function(){
 
     play = 4;
    // alert("Now it's player 2's time to eat up some space.");
+   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 2 </em> its time to Eat up.</h4>');
     }
   }
   }
@@ -114,13 +118,14 @@ $(".box").click(function(){
   if (play==2) {
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
-    alert(pl1);
+    //alert(pl1);
     var id1 = $(this).attr("id");
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 1 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
         play = 3;
       //  alert("Now, it's Player2's turn to move.")
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
       }
     }
   }
@@ -135,7 +140,8 @@ $(".box").click(function(){
     var q =clickable(id);
     var content,new_box;
     if (q.length===0) {
-      alert("Player1 Lost.")
+      //alert("Player1 Lost.");
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
     }
 
 
@@ -153,6 +159,7 @@ $(".box").click(function(){
 
     play = 2;
    // alert("Now it's player 1's time to eat up some space.");
+   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 1 </em> its time to Eat up.</h4>');
     }
   }
   }

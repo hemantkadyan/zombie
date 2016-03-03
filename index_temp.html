@@ -26,27 +26,18 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <style type="text/css">
       body {
-      padding-top: 50px;
+      padding-top: 54px;
       padding-bottom: 20px;
       }
-      .box{ width: 70px;
-            height: 70px;
+      .box{ 
              margin-bottom:4px;
 
       }
       #game{
-        margin-left:28%; 
-        margin-bottom: 20px;
-        margin-top: 20px;
+        margin-left: 25%;
       }
 
-      #game1{
-        margin-left:28%; 
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-
-      .dead{
+     .dead{
       	background-color: red;
       }
     </style>
@@ -69,53 +60,26 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Zombie Mathematics</a>
+          
         </div>
+        
         <div id="navbar" class="navbar-collapse collapse">
+          
           <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            
+            <a href="logout.php" class="btn btn-danger"><strong>Logout</strong></a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, Zombies!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
-      
-      <hr>
-      <div class="container">
-<h3 style="text-align: center;">Time To Move Your Zombie</h3>
+    
+      <div class="container" >  
+      <div class="alert alert-info">
+		  <h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>
+	  </div>
+	 
       <div id="game" >
        
       <table>
@@ -187,11 +151,13 @@
       </table>
       </div> <!-- Game Panel Div Ends -->
      
-      </div> <!-- Game Panel CONTAINER Div Ends -->
+      
+      
       <footer>
         <p>&copy; 2016 Mathematics Association .</p>
       </footer>
-    </div> <!-- /container -->
+   	</div> <!-- Game Panel CONTAINER Div Ends -->
+   
 
 
     <!-- Bootstrap core JavaScript
@@ -203,12 +169,9 @@
      player1 = document.getElementById('14');
      player2 = document.getElementById('74');
 
-
-
-
     </script>
-      <script type="text/javascript" src="clickable_fn.js"></script>
-
+      <script type="text/javascript" src="js/clickable_fn.js"></script>
+      <script type="text/javascript" src="js/setalign.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
