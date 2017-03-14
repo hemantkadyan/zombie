@@ -54,6 +54,28 @@ clickable = function(a){
 
     }
 
+function colorify(tiles,p){                  // Function to colour the squares where the user can move.
+  
+  for(var k=0;k<tiles.length;k++){
+    if(tiles[k]!=p)
+      $('#'+tiles[k]).addClass('movable');
+  }
+}
+
+
+function decolorify(tiles){                  // Function to undo the changes done by colorify
+  for(var k=0;k<tiles.length;k++){
+    $('#'+tiles[k]).removeClass('movable');
+  }
+}
+
+  
+
+ var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
+  var t=parseInt(s);
+
+  colorify(clickable(t),0);
+
 
 function eatSpace(a){
   $("#" +  a).addClass('dead');
@@ -94,7 +116,7 @@ $(".box").click(function(){
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
-
+    decolorify(clickable(id));   //Uncolour the coloured changes.
 
     $('#' + s).html(' ');
     $('#' + s).removeClass("btn-defualt");
@@ -124,6 +146,7 @@ $(".box").click(function(){
       if (confirm("Player 1 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
         play = 3;
+        colorify(clickable(parseInt(pl2)),parseInt(id1));   // Colour movable squares
       //  alert("Now, it's Player2's turn to move.")
       $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
       }
@@ -143,12 +166,14 @@ $(".box").click(function(){
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
     }
-
-
+    
+    colorify(q);  // Colour movable squares
+  
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 1")').html();
-
+   
+     decolorify(q);  // Uncolor changes
 
     $('#' + s).html(' ');
     $('#' + s).removeClass("btn-defualt");
