@@ -1,0 +1,39 @@
+body{
+	background: #4FB0C6;
+}
+
+.form-custom{
+	margin:1%; 
+	border:2px solid black;
+	padding:5%;
+	background: #D4DFE6;
+}
+
+.form-group{
+	margin-top: 2%;
+	margin-bottom: 5%;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.enabled{
+   pointer-events: all;
+    opacity: 1;	
+}
+
+.jumbotron{
+	font-size: 20px !important;
+	padding:20px;
+	background: #8CD790;
+}
+
+.jumbotron h1{
+	font-size: 40px;
+}
+
+.button{
+	background: #D4DFE6;
+}
