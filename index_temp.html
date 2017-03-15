@@ -34,7 +34,10 @@
 
       }
       #game{
-        margin-left: 25%;
+        display: flex;
+        flex-direction:row;
+        justify-content:center;
+        width: 100% !important;
       }
 
      .dead{
@@ -43,6 +46,51 @@
       .movable{
         background-color: lightgreen;
       }
+	    
+      
+      .score{
+        display: flex;
+        padding:10px;
+        background-color: lightgreen;
+        position: absolute;
+        border-radius: 3px;
+        justify-content:center;
+        align-items:center;
+        
+      }
+
+      .score1{
+       
+        width:100px;
+        height:100px;
+      }
+
+      .score2{
+        
+        width:100px;
+        height:100px;
+      }
+
+      .scorecontainer{
+        position: absolute;
+        display:flex;
+        justify-content:center;
+        width: 170px;
+        height:170px;
+        font-size: 30px
+      }
+
+      .scorecontainer1{
+        left:50px;
+      }
+
+      .scorecontainer2{
+        right: 50px;
+      }
+   
+     .container{
+      width: 100%;
+     }
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -83,8 +131,11 @@
 		  <h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>
 	  </div>
 	 
-      <div id="game" >
-       
+      <div id="game" style="width:100%;">
+       <div class="scorecontainer scorecontainer1">
+          Player 1
+         <div class="score score1">0</div>
+       </div>
       <table>
         <tr class="gamerow">
           <td class="box btn btn-primary box1" id="11"></td>
@@ -152,7 +203,10 @@
 
 
       </table>
-      </div> <!-- Game Panel Div Ends -->
+      <div class="scorecontainer scorecontainer2">Player 2
+      <div class="score score2">0</div></div>
+      </div> 
+       <!-- Game Panel Div Ends -->
      
       
       
