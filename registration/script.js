@@ -20,10 +20,11 @@ $('#player1').addClass("disabled");
 
 //Function after clicking submit of player2
 $('#submit2').on('click', function(e){
-   e.preventDefault();
+   
   
+  e.preventDefault();
   if(confirm("Is the information entered by you correct?")){
-  // Add AJAX Call Here
+  $('#form1').submit();
 
   }
 
