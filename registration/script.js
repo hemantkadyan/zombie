@@ -22,7 +22,6 @@ $('#player1').addClass("disabled");
 $('#submit2').on('click', function(e){
    e.preventDefault();
   
-  if(confirm("Is the information entered by you correct?")){
   e.preventDefault();
   if(confirm("Is the information entered by you correct?")){
   $('#form1').submit();
