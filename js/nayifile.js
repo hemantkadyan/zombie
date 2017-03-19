@@ -90,6 +90,13 @@ $(".box").click(function(){
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
     var id1 = $(this).attr("id");
+<<<<<<< HEAD
+=======
+    displayQuestion(id1);
+    if(SHA1(result)==answer)
+    {
+      
+>>>>>>> d92fb648dfc5257a0cf05dd8eca8d921367c73ae
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 2 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -98,6 +105,8 @@ $(".box").click(function(){
       $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
       }
     }
+  
+  $(this).removeAttr("id");
   }
 
 
@@ -142,6 +151,28 @@ $(".box").click(function(){
     var pl2 = $('.box:contains("Player 2")').attr("id");
     //alert(pl1);
     var id1 = $(this).attr("id");
+<<<<<<< HEAD
+=======
+    displayQuestion(id1);
+    
+   if(SHA1(result)==answer)
+    {
+    
+    if (id1!=pl1 && id1!=pl2) {
+      if (confirm("Player 2 Are you sure you want to eat up this space?")) {
+        eatSpace(id1);
+        play = 1;
+      //  alert("Now, it's Player1's turn to move.")
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+      }
+      $(this).removeAttr("id");
+    
+    
+    }
+  }
+
+
+>>>>>>> d92fb648dfc5257a0cf05dd8eca8d921367c73ae
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 1 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -164,38 +195,4 @@ $(".box").click(function(){
     var content,new_box;
     if (q.length===0) {
       //alert("Player1 Lost.");
-      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
-    }
-    
-    colorify(q);  // Colour movable squares
-  
-    if (q.indexOf(a) != -1) {
-      if (confirm('Do you want to move here ?')) {
-    content = $('.box:contains("Player 1")').html();
-   
-     decolorify(q);  // Uncolor changes
-
-    $('#' + s).html(' ');
-    $('#' + s).removeClass("btn-defualt");
-    $('#' + s).addClass("btn-primary");
-    $('#' + b).html(content);
-    $('#' + b).removeClass("btn-primary");
-    $('#' + b).addClass("btn-defualt");
-
-    play = 2;
-   // alert("Now it's player 1's time to eat up some space.");
-   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 1 </em> its time to Eat up.</h4>');
-    }
-  }
-  }
-
-
-    
-
-
-    
-  
-  });
-
-
-});
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins
