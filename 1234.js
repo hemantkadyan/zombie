@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  
+  alert("sd");
+
   var play = 1;
 
 clickable = function(a){
