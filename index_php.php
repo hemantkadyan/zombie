@@ -161,67 +161,67 @@ for ($x = 1; $x <= 49; $x++) {
        </div>
       <table>
         <tr class="gamerow">
-          <td class="box btn btn-primary box1" id="11"></td>
-          <td class="btn btn-primary box box1" id="12"></td>
-          <td class="btn btn-primary box box1" id="13"></td>
-          <td class="btn btn-defualt box box1" id="14">Player <br/>1<br/><span class="glyphicon glyphicon-bishop" aria-hidden="true"></span></td>
-          <td class="btn btn-primary box box1" id="15"></td>
-          <td class="btn btn-primary box box1" id="16"></td>
-          <td class="btn btn-primary box box1" id="17"></td>
+          <td class="box btn btn-primary box1 11" id="11"></td>
+          <td class="btn btn-primary box box1 12" id="12"></td>
+          <td class="btn btn-primary box box1 13" id="13"></td>
+          <td class="btn btn-defualt box box1 14" id="14">Player <br/>1<br/><span class="glyphicon glyphicon-bishop" aria-hidden="true"></span></td>
+          <td class="btn btn-primary box box1 15" id="15"></td>
+          <td class="btn btn-primary box box1 16" id="16"></td>
+          <td class="btn btn-primary box box1 17" id="17"></td>
         </tr>
         <tr class="gamerow">
-          <td class="btn btn-primary box box1" id="21"></td>
-          <td class="btn btn-primary box box1" id="22"></td>
-          <td class="btn btn-primary box box1" id="23"></td>
-          <td class="btn btn-primary box box1" id="24"></td>
-          <td class="btn btn-primary box box1" id="25"></td>
-          <td class="btn btn-primary box box1" id="26"></td>
-          <td class="btn btn-primary box box1" id="27"></td>
+          <td class="btn btn-primary box box1 21" id="21"></td>
+          <td class="btn btn-primary box box1 22" id="22"></td>
+          <td class="btn btn-primary box box1 23" id="23"></td>
+          <td class="btn btn-primary box box1 24" id="24"></td>
+          <td class="btn btn-primary box box1 25" id="25"></td>
+          <td class="btn btn-primary box box1 26" id="26"></td>
+          <td class="btn btn-primary box box1 27" id="27"></td>
         </tr>
         <tr class="gamerow">
-          <td class="btn btn-primary box box1" id="31"></td>
-          <td class="btn btn-primary box box1" id="32"></td>
-          <td class="btn btn-primary box box1" id="33"></td>
-          <td class="btn btn-primary box box1" id="34"></td>
-          <td class="btn btn-primary box box1" id="35"></td>
-          <td class="btn btn-primary box box1" id="36"></td>
-          <td class="btn btn-primary box box1" id="37"></td>
+          <td class="btn btn-primary box box1 31" id="31"></td>
+          <td class="btn btn-primary box box1 32" id="32"></td>
+          <td class="btn btn-primary box box1 33" id="33"></td>
+          <td class="btn btn-primary box box1 34" id="34"></td>
+          <td class="btn btn-primary box box1 35" id="35"></td>
+          <td class="btn btn-primary box box1 36" id="36"></td>
+          <td class="btn btn-primary box box1 37" id="37"></td>
         </tr>
         <tr class="gamerow">
-          <td class="btn btn-primary box box1" id="41"></td>
-          <td class="btn btn-primary box box1" id="42"></td>
-          <td class="btn btn-primary box box1" id="43"></td>
-          <td class="btn btn-primary box box1" id="44"></td>
-          <td class="btn btn-primary box box1" id="45"></td>
-          <td class="btn btn-primary box box1" id="46"></td>
-          <td class="btn btn-primary box box1" id="47"></td>
+          <td class="btn btn-primary box box1 41" id="41"></td>
+          <td class="btn btn-primary box box1 42" id="42"></td>
+          <td class="btn btn-primary box box1 43" id="43"></td>
+          <td class="btn btn-primary box box1 44" id="44"></td>
+          <td class="btn btn-primary box box1 45" id="45"></td>
+          <td class="btn btn-primary box box1 46" id="46"></td>
+          <td class="btn btn-primary box box1 47" id="47"></td>
         </tr>
         <tr class="gamerow">
-          <td class="btn btn-primary box box1" id="51"></td>
-          <td class="btn btn-primary box box1" id="52"></td>
-          <td class="btn btn-primary box box1" id="53"></td>
-          <td class="btn btn-primary box box1" id="54"></td>
-          <td class="btn btn-primary box box1" id="55"></td>
-          <td class="btn btn-primary box box1" id="56"></td>
-          <td class="btn btn-primary box box1" id="57"></td>
+          <td class="btn btn-primary box box1 51" id="51"></td>
+          <td class="btn btn-primary box box1 52" id="52"></td>
+          <td class="btn btn-primary box box1 53" id="53"></td>
+          <td class="btn btn-primary box box1 54" id="54"></td>
+          <td class="btn btn-primary box box1 55" id="55"></td>
+          <td class="btn btn-primary box box1 56" id="56"></td>
+          <td class="btn btn-primary box box1 57" id="57"></td>
         </tr>
         <tr >
-          <td class="btn btn-primary box box1" id="61"></td>
-          <td class="btn btn-primary box box1" id="62"></td>
-          <td class="btn btn-primary box box1" id="63"></td>
-          <td class="btn btn-primary box box1" id="64"></td>
-          <td class="btn btn-primary box box1" id="65"></td>
-          <td class="btn btn-primary box box1" id="66"></td>
-          <td class="btn btn-primary box box1" id="67"></td>
+          <td class="btn btn-primary box box1 61" id="61"></td>
+          <td class="btn btn-primary box box1 62" id="62"></td>
+          <td class="btn btn-primary box box1 63" id="63"></td>
+          <td class="btn btn-primary box box1 64" id="64"></td>
+          <td class="btn btn-primary box box1 65" id="65"></td>
+          <td class="btn btn-primary box box1 66" id="66"></td>
+          <td class="btn btn-primary box box1 67" id="67"></td>
         </tr>
         <tr class="gamerow">
-          <td class="btn btn-primary box box1" id="71"></td>
-          <td class="btn btn-primary box box1" id="72"></td>
-          <td class="btn btn-primary box box1" id="73"></td>
-          <td class="btn btn-defualt box box1" id="74">Player <br/>2<br/><span class="glyphicon glyphicon-bishop" aria-hidden="true"></span></td>
-          <td class="btn btn-primary box box1" id="75"></td>
-          <td class="btn btn-primary box box1" id="76"></td>
-          <td class="btn btn-primary box box1" id="77"></td>
+          <td class="btn btn-primary box box1 71" id="71"></td>
+          <td class="btn btn-primary box box1 72" id="72"></td>
+          <td class="btn btn-primary box box1 73" id="73"></td>
+          <td class="btn btn-defualt box box1 74" id="74">Player <br/>2<br/><span class="glyphicon glyphicon-bishop" aria-hidden="true"></span></td>
+          <td class="btn btn-primary box box1 75" id="75"></td>
+          <td class="btn btn-primary box box1 76" id="76"></td>
+          <td class="btn btn-primary box box1 77" id="77"></td>
         </tr>
 
 
