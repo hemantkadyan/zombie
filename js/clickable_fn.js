@@ -107,11 +107,7 @@ $(".box").click(function(){
     displayQuestion(id1);
     if(SHA1(result)==answer)
     {
-      $(this).removeAttr("id");
-    
-
-
-
+      
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 2 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -120,6 +116,8 @@ $(".box").click(function(){
       $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
       }
     }
+  
+  $(this).removeAttr("id");
   }
 
 }
@@ -169,11 +167,7 @@ $(".box").click(function(){
     
    if(SHA1(result)==answer)
     {
-      $(this).removeAttr("id");
     
-
-
-
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 2 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -181,6 +175,9 @@ $(".box").click(function(){
       //  alert("Now, it's Player1's turn to move.")
       $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
       }
+      $(this).removeAttr("id");
+    
+    
     }
   }
 
