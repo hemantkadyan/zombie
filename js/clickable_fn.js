@@ -1,7 +1,8 @@
 $(document).ready(function(){
   var play = 1;
   var rNum = 0;
-     
+  var result="";  
+  var answer=""; 
 
 clickable = function(a){
       var clickables = [];
@@ -90,8 +91,9 @@ function displayQuestion(num){
   var rowNum=(id-offset)/10;
   var qnum = ((rowNum-1)*7+offset+rNum)%50;
   var question = $('#prompt'+qnum).text();
-  var result = prompt(question);
-  console.log(result);
+  result = prompt(question);
+  answer = $('#q'+qnum).html();
+  
 } 
   
   
@@ -103,6 +105,13 @@ $(".box").click(function(){
     var pl2 = $('.box:contains("Player 2")').attr("id");
     var id1 = $(this).attr("id");
     displayQuestion(id1);
+    if(SHA1(result)==answer)
+    {
+      $(this).removeAttr("id");
+    
+
+
+
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 2 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -113,6 +122,7 @@ $(".box").click(function(){
     }
   }
 
+}
 
 
   if (play==3) {
@@ -156,6 +166,23 @@ $(".box").click(function(){
     //alert(pl1);
     var id1 = $(this).attr("id");
     displayQuestion(id1);
+    
+   if(SHA1(result)==answer)
+    {
+      $(this).removeAttr("id");
+    
+
+
+
+    if (id1!=pl1 && id1!=pl2) {
+      if (confirm("Player 2 Are you sure you want to eat up this space?")) {
+        eatSpace(id1);
+        play = 1;
+      //  alert("Now, it's Player1's turn to move.")
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+      }
+    }
+  }
 
 
     if (id1!=pl1 && id1!=pl2) {
@@ -207,6 +234,8 @@ $(".box").click(function(){
 
   
   });
+
+
 
 
 });
