@@ -1,6 +1,9 @@
 $(document).ready(function(){
   var play = 1;
   var rNum = 0;
+
+  var enteredAnswer="";
+  var correctAnswer="";
      
 
 clickable = function(a){
@@ -90,10 +93,17 @@ function displayQuestion(num){
   var rowNum=(id-offset)/10;
   var qnum = ((rowNum-1)*7+offset+rNum)%50;
   var question = $('#prompt'+qnum).text();
-  var result = prompt(question);
-  console.log(result);
+  enteredAnswer = prompt(question);
+  correctAnswer = $('#q'+qnum).html(); 
 } 
   
+function checkAnswer(){
+  if(SHA1(enteredAnswer)==correctAnswer)
+    return true;
+  else
+    return false;
+
+}
   
 //var s=$('.box:contains("Player 1")').attr('id');
 //var s1 = parseInt(s);
@@ -104,12 +114,14 @@ $(".box").click(function(){
     var id1 = $(this).attr("id");
     displayQuestion(id1);
     if (id1!=pl1 && id1!=pl2) {
-      if (confirm("Player 2 Are you sure you want to eat up this space?")) {
+     
+      if (checkAnswer()) {
         eatSpace(id1);
-        play = 1;
-      //  alert("Now, it's Player1's turn to move.")
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
       }
+        play = 1;
+      
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+      
     }
   }
 
@@ -126,6 +138,9 @@ $(".box").click(function(){
       //alert("Player2 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
     }
+
+    
+
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
@@ -155,17 +170,22 @@ $(".box").click(function(){
     var pl2 = $('.box:contains("Player 2")').attr("id");
     //alert(pl1);
     var id1 = $(this).attr("id");
-    displayQuestion(id1);
-
+   
 
     if (id1!=pl1 && id1!=pl2) {
-      if (confirm("Player 1 Are you sure you want to eat up this space?")) {
-        eatSpace(id1);
-        play = 3;
-        colorify(clickable(parseInt(pl2)),parseInt(id1));   // Colour movable squares
-      //  alert("Now, it's Player2's turn to move.")
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
-      }
+       displayQuestion(id1);
+
+      if (checkAnswer()) {
+        eatSpace(id1);         
+        }  
+       
+        colorify(clickable(parseInt(pl2)),parseInt(id1));  // Colour movable squares
+        play = 3;        
+        $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
+      
+
+    
+
     }
   }
 
