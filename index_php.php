@@ -250,8 +250,9 @@ for ($x = 1; $x <= 49; $x++) {
      player2 = document.getElementById('74');
 
     </script>
-      <script type="text/javascript" src="js/clickable_fn.js"></script>
-      <script type="text/javascript" src="js/setalign.js"></script>
+      <script type="text/javascript" src="js/sha1.js"></script>
+      <script type="text/javascript" src="js/clickable_fn.js?v=123"></script>
+      <script type="text/javascript" src="js/setalign.js?v=234"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>

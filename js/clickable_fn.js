@@ -1,8 +1,5 @@
 $(document).ready(function(){
   var play = 1;
-  var rNum = 0;
-  var result="";  
-  var answer=""; 
 
 clickable = function(a){
       var clickables = [];
@@ -70,33 +67,22 @@ function decolorify(tiles){                  // Function to undo the changes don
   for(var k=0;k<tiles.length;k++){
     $('#'+tiles[k]).removeClass('movable');
   }
-} 
+}
+
   
-  
-  
-  var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
+
+ var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
   var t=parseInt(s);
-  
- colorify(clickable(t),0);
-  
-  
+
+  colorify(clickable(t),0);
+
+
 function eatSpace(a){
   $("#" +  a).addClass('dead');
-  
-} 
-  
-function displayQuestion(num){
-  var id = parseInt(num);
-  var offset = id%10;
-  var rowNum=(id-offset)/10;
-  var qnum = ((rowNum-1)*7+offset+rNum)%50;
-  var question = $('#prompt'+qnum).text();
-  result = prompt(question);
-  answer = $('#q'+qnum).html();
-  
-} 
-  
-  
+
+}
+
+
 //var s=$('.box:contains("Player 1")').attr('id');
 //var s1 = parseInt(s);
 $(".box").click(function(){
@@ -104,14 +90,6 @@ $(".box").click(function(){
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
     var id1 = $(this).attr("id");
-    displayQuestion(id1);
-    if(SHA1(result)==answer)
-    {
-      $(this).removeAttr("id");
-    
-
-
-
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 2 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -122,7 +100,6 @@ $(".box").click(function(){
     }
   }
 
-}
 
 
   if (play==3) {
@@ -165,26 +142,6 @@ $(".box").click(function(){
     var pl2 = $('.box:contains("Player 2")').attr("id");
     //alert(pl1);
     var id1 = $(this).attr("id");
-    displayQuestion(id1);
-    
-   if(SHA1(result)==answer)
-    {
-      $(this).removeAttr("id");
-    
-
-
-
-    if (id1!=pl1 && id1!=pl2) {
-      if (confirm("Player 2 Are you sure you want to eat up this space?")) {
-        eatSpace(id1);
-        play = 1;
-      //  alert("Now, it's Player1's turn to move.")
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
-      }
-    }
-  }
-
-
     if (id1!=pl1 && id1!=pl2) {
       if (confirm("Player 1 Are you sure you want to eat up this space?")) {
         eatSpace(id1);
@@ -232,10 +189,13 @@ $(".box").click(function(){
   }
   }
 
+
+    
+
+
+    
   
   });
-
-
 
 
 });
