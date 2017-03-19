@@ -1,5 +1,13 @@
 $(document).ready(function(){
   var play = 1;
+  var rNum = 0;
+
+  var enteredAnswer="";
+  var correctAnswer="";
+  var redSquares=[];
+  var p1pos=14;
+  var p2pos=74;
+     
 
 clickable = function(a){
       var clickables = [];
@@ -67,44 +75,60 @@ function decolorify(tiles){                  // Function to undo the changes don
   for(var k=0;k<tiles.length;k++){
     $('#'+tiles[k]).removeClass('movable');
   }
-}
-
+} 
   
-
- var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
+  
+  
+  var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
   var t=parseInt(s);
-
-  colorify(clickable(t),0);
-
-
+  
+ colorify(clickable(t),0);
+  
+  
 function eatSpace(a){
   $("#" +  a).addClass('dead');
+  
+} 
+  
+function displayQuestion(num){
+  var id = parseInt(num);
+  var offset = id%10;
+  var rowNum=(id-offset)/10;
+  var qnum = ((rowNum-1)*7+offset+rNum)%50;
+  var question = $('#prompt'+qnum).text();
+  enteredAnswer = prompt(question);
+  correctAnswer = $('#q'+qnum).html(); 
+} 
+  
+function checkAnswer(){
+  if(SHA1(enteredAnswer)==correctAnswer)
+    return true;
+  else
+    return false;
 
 }
-
-
+  
 //var s=$('.box:contains("Player 1")').attr('id');
 //var s1 = parseInt(s);
 $(".box").click(function(){
+  
   if (play==4) {
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
     var id1 = $(this).attr("id");
-
     displayQuestion(id1);
-    if(SHA1(result)==answer)
-    {
-      
     if (id1!=pl1 && id1!=pl2) {
-      if (confirm("Player 2 Are you sure you want to eat up this space?")) {
+     
+      if (checkAnswer()) {
         eatSpace(id1);
-        play = 1;
-      //  alert("Now, it's Player1's turn to move.")
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+        redSquares.push(id1);
+        $(this).removeAttr("id");
       }
+        play = 1;
+      
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+      
     }
-  
-  $(this).removeAttr("id");
   }
 
 
@@ -120,11 +144,15 @@ $(".box").click(function(){
       //alert("Player2 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
     }
+
+    
+
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
+    p2pos = id;
     decolorify(clickable(id));   //Uncolour the coloured changes.
-
+    
     $('#' + s).html(' ');
     $('#' + s).removeClass("btn-defualt");
     $('#' + s).addClass("btn-primary");
@@ -149,35 +177,25 @@ $(".box").click(function(){
     var pl2 = $('.box:contains("Player 2")').attr("id");
     //alert(pl1);
     var id1 = $(this).attr("id");
-
-    displayQuestion(id1);
-    
-   if(SHA1(result)==answer)
-    {
-    
-    if (id1!=pl1 && id1!=pl2) {
-      if (confirm("Player 2 Are you sure you want to eat up this space?")) {
-        eatSpace(id1);
-        play = 1;
-      //  alert("Now, it's Player1's turn to move.")
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
-      }
-      $(this).removeAttr("id");
-    
-    
-    }
-  }
-
-
+   
 
     if (id1!=pl1 && id1!=pl2) {
-      if (confirm("Player 1 Are you sure you want to eat up this space?")) {
-        eatSpace(id1);
-        play = 3;
-        colorify(clickable(parseInt(pl2)),parseInt(id1));   // Colour movable squares
-      //  alert("Now, it's Player2's turn to move.")
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
-      }
+       displayQuestion(id1);
+
+      if (checkAnswer()) {
+        console.log("right");
+        eatSpace(id1);                 
+        redSquares.push(id1);
+        $(this).removeAttr("id");
+        }  
+       
+        colorify(clickable(parseInt(pl2)));  // Colour movable squares
+        play = 3;        
+        $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
+      
+
+    
+
     }
   }
 
@@ -192,4 +210,33 @@ $(".box").click(function(){
     var content,new_box;
     if (q.length===0) {
       //alert("Player1 Lost.");
-      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+    }
+    
+    colorify(q);  // Colour movable squares
+  
+    if (q.indexOf(a) != -1) {
+    if (confirm('Do you want to move here ?')) {
+    content = $('.box:contains("Player 1")').html();
+     p1pos = id;
+     decolorify(q);  // Uncolor changes
+
+    $('#' + s).html(' ');
+    $('#' + s).removeClass("btn-defualt");
+    $('#' + s).addClass("btn-primary");
+    $('#' + b).html(content);
+    $('#' + b).removeClass("btn-primary");
+    $('#' + b).addClass("btn-defualt");
+
+    play = 2;
+   // alert("Now it's player 1's time to eat up some space.");
+   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 1 </em> its time to Eat up.</h4>');
+    }
+  }
+  }
+
+  
+  });
+
+
+});
