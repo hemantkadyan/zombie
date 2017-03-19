@@ -4,6 +4,9 @@ $(document).ready(function(){
 
   var enteredAnswer="";
   var correctAnswer="";
+  var redSquares=[];
+  var p1pos=14;
+  var p2pos=74;
      
 
 clickable = function(a){
@@ -108,6 +111,7 @@ function checkAnswer(){
 //var s=$('.box:contains("Player 1")').attr('id');
 //var s1 = parseInt(s);
 $(".box").click(function(){
+  
   if (play==4) {
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
@@ -117,6 +121,8 @@ $(".box").click(function(){
      
       if (checkAnswer()) {
         eatSpace(id1);
+        redSquares.push(id1);
+        $(this).removeAttr("id");
       }
         play = 1;
       
@@ -144,8 +150,9 @@ $(".box").click(function(){
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
+    p2pos = id;
     decolorify(clickable(id));   //Uncolour the coloured changes.
-
+    
     $('#' + s).html(' ');
     $('#' + s).removeClass("btn-defualt");
     $('#' + s).addClass("btn-primary");
@@ -176,10 +183,13 @@ $(".box").click(function(){
        displayQuestion(id1);
 
       if (checkAnswer()) {
-        eatSpace(id1);         
+        console.log("right");
+        eatSpace(id1);                 
+        redSquares.push(id1);
+        $(this).removeAttr("id");
         }  
        
-        colorify(clickable(parseInt(pl2)),parseInt(id1));  // Colour movable squares
+        colorify(clickable(parseInt(pl2)));  // Colour movable squares
         play = 3;        
         $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
       
@@ -206,9 +216,9 @@ $(".box").click(function(){
     colorify(q);  // Colour movable squares
   
     if (q.indexOf(a) != -1) {
-      if (confirm('Do you want to move here ?')) {
+    if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 1")').html();
-   
+     p1pos = id;
      decolorify(q);  // Uncolor changes
 
     $('#' + s).html(' ');
