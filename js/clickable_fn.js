@@ -2,22 +2,50 @@ $(document).ready(function(){
   var play = 1;
   var rNum = parseInt($('#rNum').html());
   var pattern = /\d{2}/g;
+  play = $('#turn').html();
+  var p1pos=14;
+  var p2pos=74;
+  console.log(play);
 
-
+function ajaxcall(data,postname){
+  $.ajax({
+            type: 'post',
+            url: 'gameboarddetails.php',
+            data: {
+             postname:data,
+            },
+            success: function (response) {
+             // We get the element having id of display_info and put the response inside it
+             console.log("ajax")
+            }
+            });
+}
 function createBoard(){
   p1pos = parseInt($('#p1pos').html());
   p2pos = parseInt($('#p2pos').html());
-  redSuares = $('#redBox').html();
-  
+  var redSquares = ($('#redBox').html()).match(pattern);
+  if(redSquares==null){
+    redSquares=[];
+  }
   var newRedSquares = [];
   var content1 = $('.box:contains("Player 1")').html();
   var content2 = $('.box:contains("Player 2")').html();
   $('#14').html('');
+
   $('#74').html('');
+  $('#14').removeClass('btn-default');
+  $('#74').removeClass('btn-default');
+  $('#14').addClass('btn-primary');
+  $('#74').addClass('btn-primary');
   $('#'+p1pos).html(content1);
   $('#'+p2pos).html(content2);
-  
-  redSuares.forEach(function(entry){
+  $('#'+p1pos).removeClass('btn-primary');
+  $('#'+p2pos).removeClass('btn-primary');
+  $('#'+p1pos).addClass('btn-default');
+  $('#'+p2pos).addClass('btn-default');
+    
+
+  redSquares.forEach(function(entry){
     newRedSquares.push(parseInt(entry));
   });
 
@@ -25,18 +53,17 @@ function createBoard(){
   $('#'+entry).addClass('dead');
   });
 
-}
   
-   
 
-  createBoard();
+ }
   
+   createBoard();
+    
 
   var enteredAnswer="";
   var correctAnswer="";
   var redSquares=[];  // Stores the squares which are blocked.
-  var p1pos=14;       // Stores current position of player 1
-  var p2pos=74;       // Stores current position of player 2
+        
   var p1score=0;
   var p2score=0;
 
@@ -103,6 +130,14 @@ function colorify(tiles,p){                  // Function to colour the squares w
 }
 
 
+if(play==1 || play==2){
+    colorify(clickable(p1pos));
+  }
+  else if(play==3 || play==4){
+   colorify(clickable(p2pos));
+  }
+
+
 function decolorify(tiles){                  // Function to undo the changes done by colorify
   for(var k=0;k<tiles.length;k++){
     $('#'+tiles[k]).removeClass('movable');
@@ -114,7 +149,7 @@ function decolorify(tiles){                  // Function to undo the changes don
   var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
   var t=parseInt(s);
   
- colorify(clickable(t),0);
+ //colorify(clickable(t),0);
   
   
 function eatSpace(a){
@@ -144,6 +179,11 @@ function checkAnswer(){
     return false;
 
 }
+
+
+
+
+  $('box').click();
   
 //var s=$('.box:contains("Player 1")').attr('id');
 //var s1 = parseInt(s);
@@ -164,6 +204,10 @@ $(".box").click(function(){
       if (checkAnswer()) {
         eatSpace(id1);
         redSquares.push(id1);
+         var stringredsquares=redSquares.toString();
+          console.log(stringredsquares); 
+         ajaxcall(stringredsquares,"redbox");
+
         //ADD AJAX CALL
        // $(this).removeAttr("id");
       }
