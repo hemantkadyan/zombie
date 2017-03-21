@@ -7,7 +7,8 @@ $(document).ready(function(){
   var redSquares=[];  // Stores the squares which are blocked.
   var p1pos=14;       // Stores current position of player 1
   var p2pos=74;       // Stores current position of player 2
-   
+  var p1score=0;
+  var p2score=0;
 
 clickable = function(a){
       var clickables = [];
@@ -170,7 +171,7 @@ $(".box").click(function(){
     }
 
          console.log(q);
-
+    p2score++;
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
@@ -254,6 +255,7 @@ $(".box").click(function(){
     if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 1")').html();
      p1pos = id;
+     p1score++;
      decolorify(q);  // Uncolor changes
 
     $('#' + s).html(' ');
