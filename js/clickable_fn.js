@@ -1,6 +1,36 @@
 $(document).ready(function(){
   var play = 1;
-  var rNum = 2;
+  var rNum = parseInt($('#rNum').html());
+  var pattern = /\d{2}/g;
+
+
+function createBoard(){
+  p1pos = parseInt($('#p1pos').html());
+  p2pos = parseInt($('#p2pos').html());
+  redSuares = $('#redBox').html();
+  
+  var newRedSquares = [];
+  var content1 = $('.box:contains("Player 1")').html();
+  var content2 = $('.box:contains("Player 2")').html();
+  $('#14').html()='';
+  $('#74').html()='';
+  $('#'+p1pos).html()=content1;
+  $('#'+p2pos).html()=content2;
+  
+  redSuares.forEach(function(entry){
+    newRedSquares.push(parseInt(entry));
+  });
+
+ newRedSquares.forEach(function(entry){
+  $('#'+entry).addClass('dead');
+  });
+
+}
+  
+   
+
+  createBoard();
+  
 
   var enteredAnswer="";
   var correctAnswer="";
@@ -9,6 +39,7 @@ $(document).ready(function(){
   var p2pos=74;       // Stores current position of player 2
   var p1score=0;
   var p2score=0;
+
 
 clickable = function(a){
       var clickables = [];
@@ -133,6 +164,7 @@ $(".box").click(function(){
       if (checkAnswer()) {
         eatSpace(id1);
         redSquares.push(id1);
+        //ADD AJAX CALL
        // $(this).removeAttr("id");
       }
        var q =clickable(parseInt(pl1));
@@ -177,6 +209,8 @@ $(".box").click(function(){
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
     p2pos = id;
+    //ADD AJAX CALL
+
     decolorify(clickable(id));   //Uncolour the coloured changes.
     
     $('#' + s).html(' ');
@@ -211,7 +245,9 @@ $(".box").click(function(){
       if (checkAnswer()) {
         console.log("right");
         eatSpace(id1);                 
-        redSquares.push(id1);
+        redSquares.push(id1);  //ADD AJAX CALL
+
+
        // $(this).removeAttr("id");
         }  
        var q2 =clickable(parseInt(pl2));
@@ -256,6 +292,8 @@ $(".box").click(function(){
     if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 1")').html();
      p1pos = id;
+     //ADD AJAX CALL
+
      p1score++;
      decolorify(q);  // Uncolor changes
 
