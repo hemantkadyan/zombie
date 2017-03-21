@@ -21,7 +21,10 @@ include 'dbconnect.php';   ?>
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
-  
+    <!-- include the core styles -->
+    <link rel="stylesheet" href="dist/alertify.css" />
+    <!-- include a theme, can be included into the core instead of 2 separate files -->
+    <!--<link rel="stylesheet" href="dist/alertify.default.css" />-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -250,10 +253,14 @@ for ($x = 1; $x <= 49; $x++) {
      player2 = document.getElementById('74');
 
     </script>
+      <script src="dist/alertify.min.js"></script>
+  
+
       <script type="text/javascript" src="js/sha1.js"></script>
       <script type="text/javascript" src="js/clickable_fn.js?v=123"></script>
       <script type="text/javascript" src="js/setalign.js?v=234"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
   </body>
 </html>

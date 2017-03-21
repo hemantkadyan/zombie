@@ -91,6 +91,7 @@ function eatSpace(a){
 
   
 } 
+
   
 function displayQuestion(num){
   var id = parseInt(num);
@@ -101,7 +102,7 @@ function displayQuestion(num){
     qnum++;
   console.log(qnum);
   var question = $('#prompt'+qnum).text();
-  enteredAnswer = prompt(question);
+  enteredAnswer = prompt(question); 
   correctAnswer = $('#q'+qnum).html(); 
 } 
   
