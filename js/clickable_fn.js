@@ -7,26 +7,41 @@ $(document).ready(function(){
   var p2pos=74;
   console.log(play);
 
-function ajaxcall(data,postname){
-  $.ajax({
-            type: 'post',
-            url: 'gameboarddetails.php',
-            data: {
-             postname:data,
-            },
-            success: function (response) {
-             // We get the element having id of display_info and put the response inside it
-             console.log("ajax")
-            }
-            });
+function ajaxcallred(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {redbox:data}
+  });
 }
+function ajaxcallpl1pos(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {pl1pos:data}
+  });
+}
+function ajaxcallpl2pos(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {pl2pos:data}
+  });
+}
+var redSquares=[];
+
 function createBoard(){
   p1pos = parseInt($('#p1pos').html());
   p2pos = parseInt($('#p2pos').html());
-  var redSquares = ($('#redBox').html()).match(pattern);
+  redSquares = ($('#redBox').html()).match(pattern);
+  console.log("red from db :-"+redSquares);
   if(redSquares==null){
     redSquares=[];
   }
+  
   var newRedSquares = [];
   var content1 = $('.box:contains("Player 1")').html();
   var content2 = $('.box:contains("Player 2")').html();
@@ -62,7 +77,7 @@ function createBoard(){
 
   var enteredAnswer="";
   var correctAnswer="";
-  var redSquares=[];  // Stores the squares which are blocked.
+    // Stores the squares which are blocked.
         
   var p1score=0;
   var p2score=0;
@@ -204,9 +219,10 @@ $(".box").click(function(){
       if (checkAnswer()) {
         eatSpace(id1);
         redSquares.push(id1);
+        
          var stringredsquares=redSquares.toString();
-          console.log(stringredsquares); 
-         ajaxcall(stringredsquares,"redbox");
+          console.log("string :-"+stringredsquares); 
+         ajaxcallred(stringredsquares);
 
         //ADD AJAX CALL
        // $(this).removeAttr("id");
@@ -252,6 +268,7 @@ $(".box").click(function(){
     if (q.indexOf(a) != -1) {
       if (confirm('Do you want to move here ?')) {
     content = $('.box:contains("Player 2")').html();
+    ajaxcallpl2pos(b);
     p2pos = id;
     //ADD AJAX CALL
 
@@ -289,8 +306,9 @@ $(".box").click(function(){
       if (checkAnswer()) {
         console.log("right");
         eatSpace(id1);                 
-        redSquares.push(id1);  //ADD AJAX CALL
-
+        redSquares.push(id1);
+        var stringredsquares=redSquares.toString();  //ADD AJAX CALL
+        ajaxcallred(stringredsquares);
 
        // $(this).removeAttr("id");
         }  
@@ -337,7 +355,7 @@ $(".box").click(function(){
     content = $('.box:contains("Player 1")').html();
      p1pos = id;
      //ADD AJAX CALL
-
+     ajaxcallpl1pos(b);
      p1score++;
      decolorify(q);  // Uncolor changes
 
