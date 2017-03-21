@@ -12,10 +12,10 @@ function createBoard(){
   var newRedSquares = [];
   var content1 = $('.box:contains("Player 1")').html();
   var content2 = $('.box:contains("Player 2")').html();
-  $('#14').html()='';
-  $('#74').html()='';
-  $('#'+p1pos).html()=content1;
-  $('#'+p2pos).html()=content2;
+  $('#14').html('');
+  $('#74').html('');
+  $('#'+p1pos).html(content1);
+  $('#'+p2pos).html(content2);
   
   redSuares.forEach(function(entry){
     newRedSquares.push(parseInt(entry));
