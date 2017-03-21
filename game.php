@@ -1,4 +1,11 @@
-<?php 
+<?php
+
+session_start();
+if(isset($_SESSION['user'])=="")
+{
+  header("Location: ./login/");
+}
+
 include 'dbconnect.php';   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,10 +129,23 @@ for ($x = 1; $x <= 49; $x++) {
     $row = mysql_fetch_row($q);
     echo '<p id="q'.$x.'">'.sha1($row[0]).'</p>';
 } 
-?>  
+?> 
+
 
     
     </div>
+  </div>
+
+  <div id="gamedetails">
+  <?php 
+  $string=$_SESSION['user'];
+  $gamedetails=mysql_query("SELECT pl1pos,pl2pos, from gameboard WHERE string=".$string) or die("error in query");
+  $rowgamedetails=mysql_fetch_row($gamedetails);
+
+   ?>
+  <p id="p1pos"><?php echo $rowgamedetails[0]; ?></p>
+  <p id="p2pos"><?php echo $rowgamedetails[1]; ?></p>
+  <p id="redBox"><?php echo $rowgamedetails[2]; ?></p>
   </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -144,7 +164,7 @@ for ($x = 1; $x <= 49; $x++) {
           
           <form class="navbar-form navbar-right">
             
-            <a href="logout.php" class="btn btn-danger"><strong>Logout</strong></a>
+            <a href="./login/logout_action.php?logout=true" class="btn btn-danger"><strong>Logout</strong></a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
