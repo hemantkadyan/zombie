@@ -218,6 +218,10 @@ function displayQuestion(num){
   var question = $('#prompt'+qnum).text();
   enteredAnswer = prompt(question); 
   correctAnswer = $('#q'+qnum).html(); 
+  if(enteredAnswer==null){
+    enteredAnswer="";
+  }
+
 } 
   
 function checkAnswer(){
