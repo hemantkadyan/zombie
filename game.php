@@ -186,10 +186,7 @@ for ($x = 1; $x <= 49; $x++) {
 	  </div>
 	 
       <div id="game" style="width:100%;">
-       <div class="scorecontainer scorecontainer1">
-          Player 1
-         <div class="score score1">0</div>
-       </div>
+       
       <table>
         <tr class="gamerow">
           <td class="box btn btn-primary box1 11" id="11"></td>
@@ -257,8 +254,7 @@ for ($x = 1; $x <= 49; $x++) {
 
 
       </table>
-      <div class="scorecontainer scorecontainer2">Player 2
-      <div class="score score2">0</div></div>
+  
       </div> 
        <!-- Game Panel Div Ends -->
      

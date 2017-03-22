@@ -218,6 +218,10 @@ function displayQuestion(num){
   var question = $('#prompt'+qnum).text();
   enteredAnswer = prompt(question); 
   correctAnswer = $('#q'+qnum).html(); 
+  if(enteredAnswer==null){
+    enteredAnswer="";
+  }
+
 } 
   
 function checkAnswer(){
@@ -303,7 +307,7 @@ $(".box").click(function(){
          console.log(q);
     p2score++;
     if (q.indexOf(a) != -1) {
-      if (confirm('Do you want to move here ?')) {
+      
     content = $('.box:contains("Player 2")').html();
     ajaxcallpl2pos(b);
     p2pos = id;
@@ -325,7 +329,7 @@ $(".box").click(function(){
     ajaxcallturn(4);
    // alert("Now it's player 2's time to eat up some space.");
    $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 2 </em> its time to Eat up.</h4>');
-    }
+    
   }
   }
 
@@ -397,8 +401,7 @@ $(".box").click(function(){
          console.log(q);
     if (q.indexOf(a) != -1) {
     
-    if (confirm('Do you want to move here ?')) {
-     
+   
     content = $('.box:contains("Player 1")').html();
      p1pos = id;
      //ADD AJAX CALL
@@ -419,7 +422,7 @@ $(".box").click(function(){
     ajaxcallturn(2);
    // alert("Now it's player 1's time to eat up some space.");
    $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 1 </em> its time to Eat up.</h4>');
-    }
+    
   }
   
   }
