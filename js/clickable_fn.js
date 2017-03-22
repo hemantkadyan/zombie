@@ -75,6 +75,8 @@ function decolorify(tiles){                  // Function to undo the changes don
 
 
 $(document).ready(function(){
+
+
   var play = 1;
   var rNum = parseInt($('#rNum').html());
   var pattern = /\d{2}/g;
@@ -276,9 +278,11 @@ $(".box").click(function(){
        if (q.length==0) {
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+      $('.box:contains("Player 2")').addClass('win');
     }else{
         if (q2.length==0) {
           $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
+          $('.box:contains("Player 1")').addClass('win');
         } 
         else {
 
@@ -302,6 +306,7 @@ $(".box").click(function(){
     if (q.length == 0) {
       //alert("Player2 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><stylerong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
+      $('.box:contains("Player 1")').addClass('win');
     }
 
          console.log(q);
@@ -370,10 +375,12 @@ $(".box").click(function(){
           
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+      $('.box:contains("Player 2")').addClass('win');
     }
     else{
         if (q2.length==0) {
           $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
+          $('.box:contains("Player 1")').addClass('win');
         } 
         else {
       
@@ -395,6 +402,7 @@ $(".box").click(function(){
     if (q.length===0) {
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+      $('.box:contains("Player 2")').addClass('win');
     }
     
     colorify(q);  // Colour movable squares
@@ -430,5 +438,14 @@ $(".box").click(function(){
   
   });
 
+if($('.box:contains("Player 2")').hasClass('win')){
+          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+
+  }
+  
+  if($('.box:contains("Player 1")').hasClass('win')){
+          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+
+  }
 
 });
