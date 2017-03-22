@@ -25,3 +25,9 @@ $pl2pos = $_POST['pl2pos'];
 //echo $redbox;
 mysql_query("UPDATE gameboard SET pl2pos='$pl2pos' WHERE string='$string'") or die("error in query");
 }
+if(isset($_POST['turn'])){
+
+$turn = $_POST['turn'];
+//echo $redbox;
+mysql_query("UPDATE gameboard SET turn='$turn' WHERE string='$string'") or die("error in query");
+}
