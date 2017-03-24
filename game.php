@@ -145,7 +145,7 @@ for ($x = 1; $x <= 49; $x++) {
   <?php 
   $string=$_SESSION['user'];
   
-  $gamedetails=mysql_query("SELECT pl1pos,pl2pos,redbox,rno,turn from gameboard WHERE string='$string'") or die("error in query");
+  $gamedetails=mysql_query("SELECT pl1pos,pl2pos,redbox,rno,turn,winner from gameboard WHERE string='$string'") or die("error in query");
   $rowgamedetails=mysql_fetch_row($gamedetails);
 
    ?>
@@ -154,6 +154,7 @@ for ($x = 1; $x <= 49; $x++) {
   <p id="redBox" hidden><?php echo $rowgamedetails[2]; ?></p>
   <p id="rNum" hidden><?php echo $rowgamedetails[3]; ?></p>
   <p id="turn" hidden><?php echo $rowgamedetails[4]; ?></p>
+  <p id="winner" hidden><?php echo $rowgamedetails[5]; ?></p>
   </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -164,12 +165,12 @@ for ($x = 1; $x <= 49; $x++) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Zombie Mathematics</a>
+          <a class="navbar-brand" >Zombie Mathematics</a>
           
         </div>
         
         <div id="navbar" class="navbar-collapse collapse">
-          
+          <a class="navbar-brand" style="margin-left: 25%;">Gameboard : <?php echo $_SESSION['user']; ?></a>
           <form class="navbar-form navbar-right">
             
             <a href="./login/logout_action.php?logout=true" class="btn btn-danger"><strong>Logout</strong></a>

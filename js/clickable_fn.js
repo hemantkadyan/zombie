@@ -50,8 +50,12 @@ clickable = function(a){
       return clickables;
 
     }
-
-
+var p1time=0;
+var p2time=0;
+var timethen=0;
+var timenow=0;
+var seconds=0;
+var winner=$('#winner').html();
 
 function colorify(tiles,p){                  // Function to colour the squares where the user can move.
   
@@ -71,8 +75,61 @@ function decolorify(tiles){                  // Function to undo the changes don
   }
 } 
   
-  
+function ftimethen(){
+  var dt = new Date();
+  timethen=dt.getTime();
+}
+function ftimenow(){
+  var dt = new Date();
+  timenow=dt.getTime();
+}
+function fgetseconds(){
+  var sub = ((timenow-timethen)/1000);
+  seconds=Math.round(sub);
 
+}
+
+function ajaxcallp1time(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {p1time:data}
+  });
+}
+function ajaxcallwinner(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {winner:data}
+  });
+}
+
+function ajaxcallwin(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {winner:data}
+  });
+}
+
+
+function ajaxcallp2time(data){
+  console.log("data"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'gameboarddetails.php',
+  data: {p2time:data}
+  });
+}
+
+
+
+
+ 
+ 
 
 $(document).ready(function(){
 
@@ -91,6 +148,14 @@ function ajaxcallturn(data){
   type: 'post',
   url: 'gameboarddetails.php',
   data: {turn:data}
+  });
+}
+function ajaxcallmoves(data){
+  console.log("pln"+data);
+  var ajaxrequest = $.ajax({
+  type: 'post',
+  url: 'movesupdate.php',
+  data: {pln:data}
   });
 }
 
@@ -124,6 +189,7 @@ var redSquares=[];
 
 
 function createBoard(){
+
   p1pos = parseInt($('#p1pos').html());
   p2pos = parseInt($('#p2pos').html());
   redSquares = ($('#redBox').html()).match(pattern);
@@ -179,6 +245,13 @@ function createBoard(){
   
     $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 2 </em> its time to Eat up.</h4>');
   }
+  if(winner=='1'){
+    $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
+  }
+   if(winner=='2'){
+    $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+  }
+
 
  }
   
@@ -210,13 +283,14 @@ function eatSpace(a){
 
   
 function displayQuestion(num){
+  ftimethen();
   var id = parseInt(num);
   var offset = id%10;
   var rowNum=(id-offset)/10;
   var qnum = ((rowNum-1)*7+offset+rNum)%49;
   if(qnum==0)
     qnum++;
-  console.log(qnum);
+  
   var question = $('#prompt'+qnum).text();
   enteredAnswer = prompt(question); 
   correctAnswer = $('#q'+qnum).html(); 
@@ -227,6 +301,16 @@ function displayQuestion(num){
 } 
   
 function checkAnswer(){
+  ftimenow();
+  fgetseconds();
+  if(play==2){
+    p1time=seconds;
+    ajaxcallp1time(p1time);
+  }
+  if(play==4){
+    p2time=seconds;
+    ajaxcallp2time(p2time);
+  }
   if(SHA1(enteredAnswer)==correctAnswer)
     return true;
   else
@@ -255,6 +339,7 @@ $(".box").click(function(){
       return;
     }   
 
+
     displayQuestion(id1);
     if (id1!=pl1 && id1!=pl2) {
      
@@ -279,10 +364,12 @@ $(".box").click(function(){
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
       $('.box:contains("Player 2")').addClass('win');
+      ajaxcallwinner('2');
     }else{
         if (q2.length==0) {
           $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
           $('.box:contains("Player 1")').addClass('win');
+          ajaxcallwinner('1');
         } 
         else {
 
@@ -307,12 +394,13 @@ $(".box").click(function(){
       //alert("Player2 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><stylerong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
       $('.box:contains("Player 1")').addClass('win');
+      ajaxcallwinner('1');
     }
 
          console.log(q);
     p2score++;
     if (q.indexOf(a) != -1) {
-      
+    ajaxcallmoves('2');  
     content = $('.box:contains("Player 2")').html();
     ajaxcallpl2pos(b);
     p2pos = id;
@@ -343,6 +431,7 @@ $(".box").click(function(){
 
 
   if (play==2) {
+       
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
     //alert(pl1);
@@ -376,11 +465,13 @@ $(".box").click(function(){
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
       $('.box:contains("Player 2")').addClass('win');
+      ajaxcallwinner('2');
     }
     else{
         if (q2.length==0) {
           $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
           $('.box:contains("Player 1")').addClass('win');
+          ajaxcallwinner('1');
         } 
         else {
       
@@ -403,13 +494,14 @@ $(".box").click(function(){
       //alert("Player1 Lost.");
       $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
       $('.box:contains("Player 2")').addClass('win');
+      ajaxcallwinner('2');
     }
     
     colorify(q);  // Colour movable squares
          console.log(q);
     if (q.indexOf(a) != -1) {
     
-   
+   ajaxcallmoves('1');
     content = $('.box:contains("Player 1")').html();
      p1pos = id;
      //ADD AJAX CALL
@@ -440,12 +532,13 @@ $(".box").click(function(){
 
 if($('.box:contains("Player 2")').hasClass('win')){
           $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+          ajaxcallwinner('2');
 
   }
   
   if($('.box:contains("Player 1")').hasClass('win')){
-          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
-
+          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
+          ajaxcallwinner('1');
   }
 
 });
